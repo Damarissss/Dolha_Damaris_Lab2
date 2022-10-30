@@ -22,7 +22,8 @@ namespace Dolha_Damaris_Lab2.Controllers
         // GET: Books
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Books.ToListAsync());
+            var libraryContext = _context.Books.Include(b => b.Author);
+            return View(await libraryContext.ToListAsync());
         }
 
         // GET: Books/Details/5
@@ -34,6 +35,7 @@ namespace Dolha_Damaris_Lab2.Controllers
             }
 
             var book = await _context.Books
+                .Include(b => b.Author)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (book == null)
             {
@@ -46,6 +48,13 @@ namespace Dolha_Damaris_Lab2.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
+            //ViewData["AuthorID"] = new SelectList(_context.Authors, "ID", "ID");
+            //var authors = _context.Authors.Select(x => new
+            //{
+            //    x.ID,
+            //    FullName = x.FirstName + " " + x.LastName
+            //});
+            ViewBag.AuthorID = new SelectList(_context.Authors, "ID", "LastName");
             return View();
         }
 
@@ -54,7 +63,7 @@ namespace Dolha_Damaris_Lab2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Title,Author,Price")] Book book)
+        public async Task<IActionResult> Create([Bind("ID,Title,Price,AuthorID")] Book book)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +71,8 @@ namespace Dolha_Damaris_Lab2.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            //ViewData["AuthorID"] = new SelectList(_context.Authors, "ID", "ID", book.AuthorID);
+            ViewBag.AuthorID = new SelectList(_context.Authors, "ID", "LastName", book.AuthorID);
             return View(book);
         }
 
@@ -78,6 +89,8 @@ namespace Dolha_Damaris_Lab2.Controllers
             {
                 return NotFound();
             }
+            //ViewData["AuthorID"] = new SelectList(_context.Authors, "ID", "ID", book.AuthorID);
+            ViewBag.AuthorID = new SelectList(_context.Authors, "ID", "LastName", book.AuthorID);
             return View(book);
         }
 
@@ -86,7 +99,7 @@ namespace Dolha_Damaris_Lab2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,Author,Price")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,Price,AuthorID")] Book book)
         {
             if (id != book.ID)
             {
@@ -113,6 +126,8 @@ namespace Dolha_Damaris_Lab2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            //ViewData["AuthorID"] = new SelectList(_context.Authors, "ID", "ID", book.AuthorID);
+            ViewBag.AuthorID = new SelectList(_context.Authors, "ID", "LastName", book.AuthorID);
             return View(book);
         }
 
@@ -125,6 +140,7 @@ namespace Dolha_Damaris_Lab2.Controllers
             }
 
             var book = await _context.Books
+                .Include(b => b.Author)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (book == null)
             {
