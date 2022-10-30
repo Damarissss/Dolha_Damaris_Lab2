@@ -48,13 +48,7 @@ namespace Dolha_Damaris_Lab2.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
-            //ViewData["AuthorID"] = new SelectList(_context.Authors, "ID", "ID");
-            //var authors = _context.Authors.Select(x => new
-            //{
-            //    x.ID,
-            //    FullName = x.FirstName + " " + x.LastName
-            //});
-            ViewBag.AuthorID = new SelectList(_context.Authors, "ID", "LastName");
+            ViewBag.AuthorID = new SelectList(_context.Authors, "ID", "FullName");
             return View();
         }
 
@@ -65,6 +59,12 @@ namespace Dolha_Damaris_Lab2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Title,Price,AuthorID")] Book book)
         {
+            //var authors = _context.Authors.Select(x => new
+            //{
+            //    x.ID,
+            //    FullName = x.FirstName + " " + x.LastName
+            //});
+
             if (ModelState.IsValid)
             {
                 _context.Add(book);
@@ -72,7 +72,7 @@ namespace Dolha_Damaris_Lab2.Controllers
                 return RedirectToAction(nameof(Index));
             }
             //ViewData["AuthorID"] = new SelectList(_context.Authors, "ID", "ID", book.AuthorID);
-            ViewBag.AuthorID = new SelectList(_context.Authors, "ID", "LastName", book.AuthorID);
+            ViewBag.AuthorID = new SelectList(_context.Authors, "ID", "FullName", book.AuthorID);
             return View(book);
         }
 
@@ -90,7 +90,7 @@ namespace Dolha_Damaris_Lab2.Controllers
                 return NotFound();
             }
             //ViewData["AuthorID"] = new SelectList(_context.Authors, "ID", "ID", book.AuthorID);
-            ViewBag.AuthorID = new SelectList(_context.Authors, "ID", "LastName", book.AuthorID);
+            ViewBag.AuthorID = new SelectList(_context.Authors, "ID", "FullName", book.AuthorID);
             return View(book);
         }
 
@@ -127,7 +127,7 @@ namespace Dolha_Damaris_Lab2.Controllers
                 return RedirectToAction(nameof(Index));
             }
             //ViewData["AuthorID"] = new SelectList(_context.Authors, "ID", "ID", book.AuthorID);
-            ViewBag.AuthorID = new SelectList(_context.Authors, "ID", "LastName", book.AuthorID);
+            ViewBag.AuthorID = new SelectList(_context.Authors, "ID", "FullName", book.AuthorID);
             return View(book);
         }
 
