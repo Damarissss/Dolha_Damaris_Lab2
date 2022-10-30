@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dolha_Damaris_Lab2.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20221030135314_InitialCreate2")]
-    partial class InitialCreate2
+    [Migration("20221030173802_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
