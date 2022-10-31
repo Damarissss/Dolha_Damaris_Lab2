@@ -15,46 +15,46 @@ namespace Dolha_Damaris_Lab2.Data
                     return; // BD a fost creata anterior (DB has been seeded)
                 }
                 
-                context.Authors.AddRange(
-                new Author
-                {
-                    FirstName = "Mihail",
-                    LastName = "Sadoveanu"
-                },
-                new Author
-                {
-                    FirstName = "George",
-                    LastName = "Calinescu"
-                },
-                new Author
-                {
-                    FirstName = "Mircea",
-                    LastName = "Eliade"
-                }
-                );
-                context.SaveChanges();
+                //context.Authors.AddRange(
+                //new Author
+                //{
+                //    FirstName = "Mihail",
+                //    LastName = "Sadoveanu"
+                //},
+                //new Author
+                //{
+                //    FirstName = "George",
+                //    LastName = "Calinescu"
+                //},
+                //new Author
+                //{
+                //    FirstName = "Mircea",
+                //    LastName = "Eliade"
+                //}
+                //);
+                //context.SaveChanges();
 
-                context.Books.AddRange(
-                new Book 
-                {
-                    Title = "Baltagul", 
-                    Price = Decimal.Parse("22"),
-                    AuthorID = context.Authors.Single(author => author.LastName == "Sadoveanu").ID
-                },
-                new Book 
-                {
-                    Title = "Enigma Otiliei", 
-                    Price = Decimal.Parse("18"),
-                    AuthorID = context.Authors.Single(author => author.LastName == "Calinescu").ID
-                },
-                new Book
-                {
-                    Title = "Maytrei", 
-                    Price = Decimal.Parse("27"),
-                    AuthorID = context.Authors.Single(author => author.LastName == "Eliade").ID
-                }
-                );
-                context.SaveChanges();
+                //context.Books.AddRange(
+                //new Book 
+                //{
+                //    Title = "Baltagul", 
+                //    Price = Decimal.Parse("22"),
+                //    AuthorID = context.Authors.Single(author => author.LastName == "Sadoveanu").ID
+                //},
+                //new Book 
+                //{
+                //    Title = "Enigma Otiliei", 
+                //    Price = Decimal.Parse("18"),
+                //    AuthorID = context.Authors.Single(author => author.LastName == "Calinescu").ID
+                //},
+                //new Book
+                //{
+                //    Title = "Maytrei", 
+                //    Price = Decimal.Parse("27"),
+                //    AuthorID = context.Authors.Single(author => author.LastName == "Eliade").ID
+                //}
+                //);
+                //context.SaveChanges();
 
                 context.Customers.AddRange(
                 new Customer

@@ -11,16 +11,17 @@ namespace Dolha_Damaris_Lab2.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Book> Books { get; set; }
-        public DbSet<Author> Authors { get; set; }
+        //public DbSet<Author> Authors { get; set; }
 
         // The code in the OnModelCreating method of the DbContext class uses the fluent API to configure EF behavior.
         // The API is called "fluent" because it's often used by stringing a series of method calls together into a single statement
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer>().ToTable("Customer");
-            modelBuilder.Entity<Order>().ToTable("Order");
+            modelBuilder.Entity<Customer>()?.ToTable("Customer");
+            modelBuilder.Entity<Order>()?.ToTable("Order");
             modelBuilder.Entity<Book>().ToTable("Book");
             modelBuilder.Entity<Author>().ToTable("Author");
         }
+        public DbSet<Dolha_Damaris_Lab2.Models.Author> Authors { get; set; }
     }
 }

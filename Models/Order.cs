@@ -11,8 +11,8 @@ namespace Dolha_Damaris_Lab2.Models
         public int CustomerID { get; set; }
         public int BookID { get; set; }
 
-        public Customer Customer { get; set; }
-        public Book Book { get; set; }
+        public Customer? Customer { get; set; }
+        public Book? Book { get; set; }
 
     }
 }
