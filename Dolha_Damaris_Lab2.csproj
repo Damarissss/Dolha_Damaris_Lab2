@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Publishers1Controller.cs" />
+    <Compile Remove="Migrations\20221030173802_InitialCreate.cs" />
+    <Compile Remove="Migrations\20221030173802_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20221107204652_ExtendedModel.cs" />
+    <Compile Remove="Migrations\20221107204652_ExtendedModel.Designer.cs" />
+    <Compile Remove="Migrations\LibraryContextModelSnapshot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10">

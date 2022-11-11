@@ -13,7 +13,6 @@ namespace Dolha_Damaris_Lab2.Models
         public int BookID { get; set; }
         [Display(Name = "Order date")]
         public DateTime OrderDate { get; set; }
-
         public Customer? Customer { get; set; }
         public Book? Book { get; set; }
 

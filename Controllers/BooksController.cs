@@ -13,7 +13,6 @@ namespace Dolha_Damaris_Lab2.Controllers
     public class BooksController : Controller
     {
         private readonly LibraryContext _context;
-        private string? studentToUpdate;
 
         public BooksController(LibraryContext context)
         {
