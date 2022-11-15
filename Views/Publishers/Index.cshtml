@@ -86,3 +86,34 @@
         }
     </table>
 }
+
+@if (Model.Orders != null)
+{
+        <h3>Clients who ordered the selected book</h3>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Birth date</th>
+            </tr>
+        @foreach (var item in Model.Orders)
+        {
+            string selectedRow = "";
+            if (item.OrderID == (int?)ViewData["BookID"])
+            {
+                selectedRow = "Success";
+            }
+                    <tr class="@selectedRow">
+                        <td>
+                    @item.Customer.Name
+                        </td>
+                        <td>
+                    @item.Customer.Adress
+                        </td>
+                        <td>
+                    @item.Customer.BirthDate.ToString("MMMM dd, yyyy")
+                        </td>
+                    </tr>
+        }
+        </table>
+}
