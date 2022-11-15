@@ -59,7 +59,7 @@
         <tr>
             <th></th>
             <th>Title</th>
-            <th>Author</th>
+            @*<th>Author</th>*@
             <th>Price</th>
         </tr>
         @foreach (var item in Model.Books)
@@ -76,9 +76,9 @@
                 <td>
                     @item.Title
                 </td>
-                <td>
+                @*<td>
                     @item.Author
-                </td>
+                </td>*@
                 <td>
                     @item.Price
                 </td>
